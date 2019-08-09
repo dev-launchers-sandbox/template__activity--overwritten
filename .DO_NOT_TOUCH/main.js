@@ -1,10 +1,12 @@
 import Phaser from "phaser";
 
-import Character from "./classes/Character.js";
+import Character from "/.DO_NOT_TOUCH/classes/Character.js";
+
+import "/modify.js";
 
 class PlayScene extends Phaser.Scene {
   preload() {
-    this.load.spritesheet("johnny", "./assets/johnny_sprite.png", {
+    this.load.spritesheet("johnny", "/.DO_NOT_TOUCH/assets/johnny_sprite.png", {
       frameWidth: 16,
       frameHeight: 16,
       margin: 0,
