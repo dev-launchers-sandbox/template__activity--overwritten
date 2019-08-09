@@ -76,7 +76,7 @@ const config = {
   parent: "game-container",
   pixelArt: true,
   zoom: 1,
-  backgroundColor: "#000000",
+  backgroundColor: "#3333AA",
   scene: PlayScene,
   physics: {
     default: "arcade",
