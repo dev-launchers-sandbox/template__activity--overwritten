@@ -2,7 +2,10 @@ import Phaser from "phaser";
 
 import Character from "/.DO_NOT_TOUCH/classes/Character.js";
 
-import "/modify.js";
+import { createPlayer, createPlatforms, createGoal } from "/modify.js";
+
+import Instruction from "./classes/Instruction";
+import InstructionSequence from "./classes/InstructionSequence";
 
 class PlayScene extends Phaser.Scene {
   preload() {
@@ -15,39 +18,31 @@ class PlayScene extends Phaser.Scene {
   }
 
   create() {
-    this.johnny = new Character(this, 10, 0);
-    this.johnny.sprite.setCollideWorldBounds(true);
+    createPlayer.call(this);
+    createPlatforms.call(this);
+    createGoal.call(this);
 
     const camera = this.cameras.main;
     const cursors = this.input.keyboard.createCursorKeys();
     camera.setBounds(0, 0, this.game.config.width, this.game.config.height);
 
-    // Upper platform
-    this.physics.add.collider(
-      this.johnny.sprite,
-      this.addPhysicalRectangle(150, 100, 500, 10, 0x00aa00)
-    );
-
-    // Middle platform
-    this.physics.add.collider(
-      this.johnny.sprite,
-      this.addPhysicalRectangle(350, 200, 500, 10, 0x00aa00)
-    );
-
-    // Lower platform
-    this.physics.add.collider(
-      this.johnny.sprite,
-      this.addPhysicalRectangle(250, 300, 500, 10, 0x00aa00)
-    );
-
     this.add
-      .text(64, 0, "Arrow keys to move and jump", {
+      .text(0, 0, "Arrow keys to move and jump", {
         font: "8px monospace",
         fill: "#ffffff",
         padding: { x: 1, y: 1 },
-        backgroundColor: "#000000"
+        backgroundColor: "transparent"
       })
       .setScrollFactor(0);
+
+    new InstructionSequence(this, [
+      new Instruction(
+        this,
+        "Change the code to\nmove your character\nto the exit!!!",
+        2000
+      ),
+      new Instruction(this, "Remove the red wall!", 2000)
+    ]);
   }
 
   update(time, delta) {
