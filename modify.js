@@ -3,7 +3,7 @@ import Phaser from "phaser";
 import Animal from "/.DO_NOT_TOUCH/classes/Animal.js";
 
 /***********************************************************
- *  Do Stuff after this line! */
+ *  Change stuff after this line! */
 
 // This function creates platforms and adds them to the scene
 export function createPlatforms(scene) {
