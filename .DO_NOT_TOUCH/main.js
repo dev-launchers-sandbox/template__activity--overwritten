@@ -1,8 +1,8 @@
 import Phaser from "phaser";
 
-import Character from "/.DO_NOT_TOUCH/classes/Character.js";
+import Animal from "/.DO_NOT_TOUCH/classes/Animal.js";
 
-import { createPlayer, createPlatforms, createGoal } from "/modify.js";
+import { createPet, createPlatforms, createGoal } from "/modify.js";
 
 import Instruction from "./classes/Instruction";
 import InstructionSequence from "./classes/InstructionSequence";
@@ -18,7 +18,7 @@ class PlayScene extends Phaser.Scene {
   }
 
   create() {
-    createPlayer.call(this);
+    createPet.call(this);
     createPlatforms.call(this);
     createGoal.call(this);
 
@@ -27,7 +27,7 @@ class PlayScene extends Phaser.Scene {
     camera.setBounds(0, 0, this.game.config.width, this.game.config.height);
 
     this.add
-      .text(0, 0, "Arrow keys to move and jump", {
+      .text(0, 0, "Take care of your pet!", {
         font: "8px monospace",
         fill: "#ffffff",
         padding: { x: 1, y: 1 },
@@ -46,7 +46,7 @@ class PlayScene extends Phaser.Scene {
   }
 
   update(time, delta) {
-    this.johnny.update(time, delta);
+    this.pet.update(time, delta);
   }
 
   /* <Begin> helper functions added by Kris */
@@ -66,11 +66,11 @@ class PlayScene extends Phaser.Scene {
 
 const config = {
   type: Phaser.AUTO,
-  width: 500,
-  height: 300,
+  width: 500 / 3,
+  height: 300 / 3,
   parent: "game-container",
   pixelArt: true,
-  zoom: 1,
+  zoom: 2,
   backgroundColor: "#3333AA",
   scene: PlayScene,
   physics: {

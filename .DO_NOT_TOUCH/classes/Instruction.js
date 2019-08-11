@@ -14,7 +14,7 @@ export default class Instruction {
     let halfScreenHeight = scene.game.config.height / 2;
     this.text = scene.add
       .text(halfScreenWidth, 0, this.instructionString, {
-        font: "30px monospace",
+        font: "10px monospace",
         fill: "#ffffff",
         align: "center",
         padding: { x: 1, y: 1 },
